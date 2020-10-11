@@ -13,7 +13,7 @@ def have_id(id_):
 
 @app.route("/")
 def index_hello():
-    return "Hello"
+    return render_template('index.html')
 
 @app.route("/visit/<cid>")
 def show_location_html(cid):
