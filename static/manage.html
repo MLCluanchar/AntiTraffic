@@ -9,12 +9,12 @@
     <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-        crossorigin="" />
+          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+          crossorigin=""/>
     <!-- Make sure you put this AFTER Leaflet's CSS -->
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-        crossorigin=""></script>
+            integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+            crossorigin=""></script>
     <link rel="stylesheet" href="./css/style.css">
 
     <style>
@@ -31,49 +31,51 @@
 <br>
 <br>
 <br>
-    <div>
-        <div class="linkcontainer">
-            <div class="center">
+<div>
+    <div class="linkcontainer">
+        <div class="center">
             <h4>Recent Info</h4>
-            </div>
         </div>
-        <br>
-        <br>
-        <div class="detailcontainer">
-            <div class="center">
-            <div id="div-list">
-            </div>
-            </div>
-        </div>
-
-        <!-- （Modal） -->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">Log</h4>
-                    </div>
-                    <div class="modal-body">
-                        ID:<p id="p-id">---</p>
-                        ip:<p id="p-ip">---</p>
-                        UserAgent:<p id="p-ua">---</p>
-                        Time:<p id="p-time">---</p>
-                        lat:<p id="p-lat">---</p>
-                        lng:<p id="p-lng">---</p>
-                        <div id='mapid'>
-
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal -->
-        </div>
-
     </div>
+    <br>
+    <br>
+    <div class="detailcontainer">
+        <div class="center">
+            <h4>
+                <div id="div-list">
+                </div>
+            </h4>
+        </div>
+    </div>
+
+    <!-- （Modal） -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Log</h4>
+                </div>
+                <div class="modal-body">
+                    ID:<p id="p-id">---</p>
+                    ip:<p id="p-ip">---</p>
+                    UserAgent:<p id="p-ua">---</p>
+                    Time:<p id="p-time">---</p>
+                    lat:<p id="p-lat">---</p>
+                    lng:<p id="p-lng">---</p>
+                    <div id='mapid'>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+</div>
 </body>
 <script>
     var mymap;
@@ -107,6 +109,7 @@
         });
         return info_dic
     }
+
     function appendLink(name_id) {
         var div = document.getElementById("div-list")
         var linkTmp = document.createElement("a")
