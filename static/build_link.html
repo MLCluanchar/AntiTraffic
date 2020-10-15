@@ -1,16 +1,25 @@
 <html>
 <head>
-
+	<link rel="stylesheet" href="./css/style.css">
 </head>
-<body>
-	<P>input your customized url:</P>
+<>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="detailcontainer">
+	<div class="dtext">
+	<P>	intput id:</P>
 	<input type="text" name="id" id="inpu-id" />
 	
-	<button onclick="build()">Generate</button>
+	<button onclick="build()">Build</button>
 	
 	
 	<h4>You can send this link to anyone</h4>
 	<h3 id="result">------------------------------</h3>
+	</div>
+</div>
 </body>
 <script>
 	var basicLink = "http://127.0.0.1:5000/visit/"
@@ -25,7 +34,5 @@
 		document.getElementById("result").innerHTML = basicLink + a
 
 	}
-	
-
 </script>
 </html>
