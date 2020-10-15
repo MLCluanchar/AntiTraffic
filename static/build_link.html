@@ -1,6 +1,6 @@
 <html>
 <head>
-	<link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <>
 <br>
@@ -9,30 +9,31 @@
 <br>
 <br>
 <div class="detailcontainer">
-	<div class="dtext">
-	<P>	intput id:</P>
-	<input type="text" name="id" id="inpu-id" />
-	
-	<button onclick="build()">Build</button>
-	
-	
-	<h4>You can send this link to anyone</h4>
-	<h3 id="result">------------------------------</h3>
-	</div>
+    <div class="dtext">
+        <P> intput id:</P>
+        <input type="text" name="id" id="inpu-id"/>
+
+        <button onclick="build()">Build</button>
+
+
+        <h4>You can send this link to anyone</h4>
+        <h3 id="result">------------------------------</h3>
+    </div>
 </div>
 </body>
 <script>
-	var basicLink = "http://127.0.0.1:5000/visit/"
-	window.onload=function(){
-		var timestamp = Date.parse(new Date());
-		document.getElementById("inpu-id").value = timestamp
-		  
-	}
-	function build(){
-		var a = document.getElementById("inpu-id").value
-		console.log(a)
-		document.getElementById("result").innerHTML = basicLink + a
+    var basicLink = "http://127.0.0.1:5000/visit/"
+    window.onload = function () {
+        var timestamp = Date.parse(new Date());
+        document.getElementById("inpu-id").value = timestamp
 
-	}
+    }
+
+    function build() {
+        var a = document.getElementById("inpu-id").value
+        console.log(a)
+        document.getElementById("result").innerHTML = basicLink + a
+
+    }
 </script>
 </html>
