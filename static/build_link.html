@@ -14,20 +14,26 @@
 	<input type="text" name="id" id="inpu-id" />
 	
 	<button onclick="build()">Build</button>
-	
-	
-	<h4>You can send this link to anyone</h4>
-	<h3 id="result">------------------------------</h3>
+	<br>
+	<h4>You can send this link to anyone</h4
+	<br>
+    <h4>----------------------------------------<h4>
+	<h3 id="result">Waiting for respondse...</h3>
+    <a href="manage.html">Manage recent info</a>
+    </div>
 	</div>
+</div>
 </div>
 </body>
 <script>
 	var basicLink = "http://127.0.0.1:5000/visit/"
+	//Let the message box display a 'random' value by default (random is based on the time stamp)
 	window.onload=function(){
 		var timestamp = Date.parse(new Date());
 		document.getElementById("inpu-id").value = timestamp
 		  
 	}
+	//After the user clicks the button, a text will be added to the suffix of basiclink
 	function build(){
 		var a = document.getElementById("inpu-id").value
 		console.log(a)
